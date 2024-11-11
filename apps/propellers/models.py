@@ -23,10 +23,7 @@ class Propeller(models.Model):
     series = models.CharField(max_length=60, null=False) #charfield son para caracteres de numeros y letras
     time = models.IntegerField(max_length=60, null=False) #charfield son para caracteres de numeros y letras
     senior_service = models.IntegerField(max_length=60, null=False) #charfield son para caracteres de numeros y letras
-  
-
     propeller_model = models.OneToOneField(Model_Propeller, on_delete=models.CASCADE, null=True)
-    description = models.OneToOneField(Model_Propeller, on_delete=models.CASCADE, null=True)
 
     
     def __str__(self):

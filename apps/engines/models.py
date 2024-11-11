@@ -23,10 +23,7 @@ class Engine(models.Model):
     series = models.CharField(max_length=60, null=False) #charfield son para caracteres de numeros y letras
     time = models.IntegerField(max_length=60, null=False) #charfield son para caracteres de numeros y letras
     senior_service = models.IntegerField(max_length=60, null=False) #charfield son para caracteres de numeros y letras
-    
-
     engine_model = models.OneToOneField(Model_Engine, on_delete=models.CASCADE, null=True)
-    description  = models.OneToOneField(Model_Engine, on_delete=models.CASCADE, null=True)
     
     def __str__(self):
         return f'{self.id}'
