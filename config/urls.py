@@ -31,6 +31,13 @@ from rest_framework_simplejwt.views import (
 
 from rest_framework import routers
 from apps.accounts.views import *
+from apps.aircrafts.views import *
+from apps.engines.views import*
+from apps.propellers.views import*
+from apps.maintenance.views import*
+
+
+
 
 # Endpoint de la documentación
 
@@ -70,6 +77,26 @@ auth_urlpatterns = [
 # Rutas de los módulos
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
+#Aircrafts
+router.register(r'planes', PlaneViewSet)
+router.register(r'planes-model', Plane_ModelViewSet)
+router.register(r'planes-time', TimeViewSet)
+router.register(r'planes-service', ServiceViewSet)
+#Engines
+router.register(r'engines', EngineViewSet)
+router.register(r'engines-model', Model_Engine_OneViewSet)
+#Propellers
+router.register(r'propellers', PropellerViewSet)
+router.register(r'propellers-model', Model_PropellerViewSet)
+#Maintenance
+router.register(r'maintenance', MaintenanceViewSet)
+router.register(r'ata', AtaViewSet)
+router.register(r'ata-chapters', ChapterViewSet)
+router.register(r'maintenance-type', Type_MaintenanceViewSet)
+
+
+
+
 
 # Rutas exclusivas de la API
 

@@ -4,7 +4,7 @@ from django.db import models
 
 
 
-# Modelo del Motor numero uno
+# Modelo del Motor
 class Model_Engine(models.Model):
     id = models.AutoField(primary_key=True, editable=False)  #vincular con las otras tablas (llave primaria)
     engine_model = models.CharField(max_length=60, null=False) #charfield son para caracteres de numeros y letras
@@ -15,7 +15,7 @@ class Model_Engine(models.Model):
 
 
 
-# Datos del Motor numero uno
+# Datos del Motor
 class Engine(models.Model):
     id = models.AutoField(primary_key=True, editable=False)  #vincular con las otras tablas (llave primaria)
     name = models.CharField(max_length=60, null=False) #charfield son para caracteres de numeros y letras
@@ -23,7 +23,7 @@ class Engine(models.Model):
     series = models.CharField(max_length=60, null=False) #charfield son para caracteres de numeros y letras
     time = models.IntegerField(max_length=60, null=False) #charfield son para caracteres de numeros y letras
     senior_service = models.IntegerField(max_length=60, null=False) #charfield son para caracteres de numeros y letras
-    engine_model = models.OneToOneField(Model_Engine, on_delete=models.CASCADE, null=True)
+    engine_model = models.ForeignKey(Model_Engine, on_delete=models.CASCADE, null=True)
     
     def __str__(self):
         return f'{self.id}'

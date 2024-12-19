@@ -1,7 +1,8 @@
 from django.db import models
 
 # Create your models here.
-
+from apps.engines.models import Engine
+from apps.propellers.models import Propeller
 
 
 # Mantenimiento mayor T.U.R.M
@@ -41,14 +42,11 @@ class Plane(models.Model):
     tuition = models.CharField(max_length=60, null=False) #charfield son para caracteres de numeros y letras
     type_tuition = models.CharField(max_length=60, null=False) #charfield son para caracteres de numeros y letras
     series = models.CharField(max_length=60, null=False) #charfield son para caracteres de numeros y letras
-    #engines = models.ManyToManyField(null=True) #charfield son para caracteres de numeros y letras
-    #propellers = models.ManyToManyField(null=True) #charfield son para caracteres de numeros y letras
-    #turbines = models.ManyToManyField(null=True) #charfield son para caracteres de numeros y letras
-    
-    
-    model = models.OneToOneField(Plane_Model, on_delete=models.CASCADE, null=True)
-    time = models.OneToOneField(Time, on_delete=models.CASCADE, null=True)
-    senior_service = models.OneToOneField(Service, on_delete=models.CASCADE, null=True)
+    engines = models.ManyToManyField(Engine, blank=True) #charfield son para caracteres de numeros y letras
+    propellers = models.ManyToManyField(Propeller, blank=True) #charfield son para caracteres de numeros y letras
+    model = models.ForeignKey(Plane_Model, on_delete=models.CASCADE, null=True)
+    time = models.CharField(max_length=500, null=True)
+    senior_service = models.CharField(max_length=500, null=True)
   
     def __str__(self):
         return f'{self.id}'
