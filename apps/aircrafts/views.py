@@ -11,9 +11,14 @@ from apps.engines.models import *
 # Create your views here.
 class PlaneViewSet(viewsets.ModelViewSet):
 
-    queryset = Plane.objects.all()
-    serializer_class = PlaneSerializer
+    queryset = Plane.objects.all().order_by('id')
+    serializer_class = PlaneReadSerializer
     permission_classes = [permissions.IsAuthenticated]
+    
+    def get_serializer_class(self):
+        if self.action in ['list', 'retrieve']:
+            return PlaneReadSerializer
+        return PlaneSerializer
     
     def create(self, request, *args, **kwargs):
         data = request.data
@@ -58,7 +63,7 @@ class PlaneViewSet(viewsets.ModelViewSet):
    
 class Plane_ModelViewSet(viewsets.ModelViewSet):
 
-    queryset = Plane_Model.objects.all()
+    queryset = Plane_Model.objects.all().order_by('id')
     serializer_class = Plane_ModelSerializer
     permission_classes = [permissions.IsAuthenticated]
     

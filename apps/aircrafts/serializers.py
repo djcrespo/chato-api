@@ -7,7 +7,12 @@ class PlaneSerializer(serializers.ModelSerializer):
     class Meta:
         model = Plane
         fields = '__all__'
-        
+
+class PlaneReadSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Plane
+        fields = '__all__'
+        depth = 3
         
 class Plane_ModelSerializer(serializers.ModelSerializer):
     class Meta:
